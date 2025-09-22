@@ -20,13 +20,6 @@ string checkFizzBuzz(int num) {
     return result;
 }
 
-bool isDigit(char c) {
-    if (c >= '0' && c <= '9') {
-        return true;
-    }
-    return false;
-}
-
 int main() {
 
     string result;
@@ -35,23 +28,13 @@ int main() {
         cin >> v[i];
     }
 
-    if (isDigit(v[2][0])) {
-        int num = stoi(v[2]);
-        num++;
-        result = checkFizzBuzz(num);
-    }
-    else {
-        if (isDigit(v[1][0])) {
-            int num = stoi(v[1]);
-            num += 2;
-            result = checkFizzBuzz(num);
-        }
-        else if (isDigit(v[0][0])) {
-            int num = stoi(v[0]);
-            num += 3;
-            result = checkFizzBuzz(num);
-        }
-    }
+    int offset = 0;
+    if (isdigit(v[2][0])) offset = 1;
+    else if (isdigit(v[1][0])) offset = 2;
+    else offset = 3;
+
+    int num = stoi(v[3 - offset]) + offset;
+    result = checkFizzBuzz(num);
 
     std::cout << result;
     return 0;
