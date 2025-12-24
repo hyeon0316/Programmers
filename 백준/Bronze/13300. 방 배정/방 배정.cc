@@ -27,26 +27,13 @@ int main() {
    }
     
     for (int i = 0; i < 6; i++) {
-        if (mans[i] != 0)
-        {
-            if (mans[i] < K)
-            {
-                roomCnt += 1;
-            }
-            else
-            {
-                roomCnt += (mans[i] + 1) / K;
-            }
-        }
+        roomCnt += mans[i] / K;
+        if (mans[i] % K)
+            roomCnt++;
 
-        if (womans[i] != 0) {
-            if (womans[i] < K) {
-                roomCnt += 1;
-            }
-            else {
-                roomCnt += (womans[i] + 1) / K;
-            }
-        }
+        roomCnt += womans[i] / K;
+        if (womans[i] % K)
+            roomCnt++;
     }
 
     cout << roomCnt;
